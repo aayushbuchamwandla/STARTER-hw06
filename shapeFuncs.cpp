@@ -112,7 +112,9 @@ void initBox(struct Box *b, double ulx, double uly, double w, double h)
 
 double areaOfBox(Box b) {
   return b.width*b.height;
-}*/
+}
+
+*/
 
 #include <iostream>
 #include <string>
@@ -163,53 +165,9 @@ string pointToString(Point p, int precision) {
   return oss.str();
 }
 string boxToString(Box b, int precision) {
-    // Decide on an effective precision based on the ul.x value.
-    int effectivePrecision;
-    if (precision == 0 || fabs(b.ul.x) >= 10) {
-        // For large numbers or when precision is 0, print as integers.
-        effectivePrecision = 0;
-    } else {
-        // For boxes with ul.x < 10, if the fractional part of ul.x is at least 0.15,
-        // we use one fewer decimal than provided (this is the "b1‐style" behavior).
-        double absVal = fabs(b.ul.x);
-        double frac = absVal - floor(absVal);
-        if (frac >= 0.15)
-            effectivePrecision = precision - 1;
-        else
-            effectivePrecision = precision;
-    }
-    
-    // Helper lambda: format a number using the chosen effective precision.
-    // If the value is (nearly) an integer, we print it as an integer.
-    auto formatVal = [effectivePrecision](double value) -> string {
-        if (fabs(value - round(value)) < 1e-9) {
-            return to_string((int)round(value));
-        } else {
-            ostringstream oss;
-            oss << fixed << setprecision(effectivePrecision) << value;
-            return oss.str();
-        }
-    };
-    
     ostringstream oss;
-    oss << "ul=(" << formatVal(b.ul.x) << "," << formatVal(b.ul.y) << "),w=";
-    // For width: if it’s nearly an integer, print without decimals.
-    if (fabs(b.width - round(b.width)) < 1e-9)
-        oss << to_string((int)round(b.width));
-    else {
-        ostringstream tmp;
-        tmp << fixed << setprecision(effectivePrecision) << b.width;
-        oss << tmp.str();
-    }
-    oss << ",h=";
-    if (fabs(b.height - round(b.height)) < 1e-9)
-        oss << to_string((int)round(b.height));
-    else {
-        ostringstream tmp;
-        tmp << fixed << setprecision(effectivePrecision) << b.height;
-        oss << tmp.str();
-    }
-    
+    oss << setprecision(precision) << defaultfloat;
+    oss << "ul=(" << b.ul.x << "," << b.ul.y << ")," << "w=" << b.width << ",h=" << b.height;
     return oss.str();
 }
 bool pointsApproxEqual(Point p1, 
@@ -238,10 +196,10 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
   // and the definition in your utility.cpp file.
 
   // TODO: FILL THIS IN WITH APPROPRIATE CODE
-  if (!boxesApproxEqual(b1.ul.x, b2.ul.x, tolerance) || !boxesApproxEqual(b1.ul.y, b2.ul.y, tolerance)) {
+  if (!approxEqual(b1.ul.x, b2.ul.x, tolerance) || !approxEqual(b1.ul.y, b2.ul.y, tolerance)) {
 	  return false;
   }
-  if (!boxesApproxEqual(b1.width, b2.width, tolerance) || !boxesApproxEqual(b1.height, b2.height, tolerance)) {
+  if (!approxEqual(b1.width, b2.width, tolerance) || !approxEqual(b1.height, b2.height, tolerance)) {
 		  return false;
   }
 
