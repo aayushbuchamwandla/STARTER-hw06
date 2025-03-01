@@ -85,14 +85,6 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 
   // TODO: FILL THIS IN WITH APPROPRIATE CODE
 
-    bool cornersEqual = approxEqual(b1.ul.x, b2.ul.x, tolerance) &&
-                        approxEqual(b1.ul.y, b2.ul.y, tolerance);
-
-    // Check if the width and height are approximately equal
-    bool dimensionsEqual = approxEqual(b1.width, b2.width, tolerance) &&
-                           approxEqual(b1.height, b2.height, tolerance);
-
-    return cornersEqual && dimensionsEqual;
 }
 
 
