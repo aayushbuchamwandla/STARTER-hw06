@@ -15,23 +15,10 @@ using namespace std;
 double distanceBetween(Point p, Point q) {
   double dist = sqrt(pow(q.x - p.x, 2) + pow(q.y - p.y, 2));
   return dist;
-  // HINTS: The distance formula is something you hopefully remember
-  //   from H.S. algebra, but if not, Wikipedia is your friend.
-  //   The sqrt function is available when you use #include <cmath>, 
-  //   and pow(expresssion,2.0) will return expression squared.
-  // You can access p.x, p.y, q.x and q.y and use those in your formula.
 
 }
 
- 
-// The function initPoint below illustrates passing a struct by pointer.
-// Inside this function:
-//  p   is the address of the struct Point
-// (*p) refers to the struct Point itself (we dereference the pointer)
-// (*p).x refers to the x member of the point
-// (*p).y refers to the y member of the point
-// p->x is a shortcut for (*p).x ( -> means deference AND THEN go inside the struct)
-// p->y is a shortcut for (*p).y ( -> means deference AND THEN go inside the struct)
+
 
 
 void initPoint(struct Point *p, double xVal, double yVal) {
@@ -65,17 +52,6 @@ bool pointsApproxEqual(Point p1,
 
 bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 
-  // Two boxes are approximately equal if their upper left corners are approximately 
-  // equal, and if their corresponding widths and height are approx equal.
-
-  // Remember: to test whether double values a and b are approximately equal, you need:
-  //   fabs(a - b) < tol
-  // Don't use a==b since this doesn't take tolerance into account.
-  // You'll need to use this technique for width and height
- 
-  // You may find it helpful to abstract out an "approxEqual" function that takes
-  // two parameters of type "double".  Put the prototype in your utility.h 
-  // and the definition in your utility.cpp file.
 
   // TODO: FILL THIS IN WITH APPROPRIATE CODE
   if (!approxEqual(b1.ul.x, b2.ul.x, tolerance) || !approxEqual(b1.ul.y, b2.ul.y, tolerance)) {
@@ -85,7 +61,9 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 		  return false;
   }
 
-  return true; // STUB!  TODO: Delete this line and comment and replace with appropriate code
+  else{
+	return true;
+  }
 }
 
 
@@ -100,8 +78,8 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
 
 void initBox(struct Box *b, double ulx, double uly, double width, double height)
 {
-  b->ul.x = ulx;
-  b->ul.y = uly;
+  b ->ul.x = ulx;
+  b -> ul.y = uly;
 
   b->width = width;
   b->height = height;
