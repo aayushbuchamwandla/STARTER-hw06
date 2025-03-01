@@ -112,8 +112,8 @@ void initBox(struct Box *b, double ulx, double uly, double w, double h)
 
 double areaOfBox(Box b) {
   return b.width*b.height;
-}
-*/
+}*/
+
 #include <iostream>
 #include <string>
 #include <sstream>  // for ostringstream
