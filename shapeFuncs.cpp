@@ -4,6 +4,7 @@
 #include <iomanip> // for setprecision
 #include <cmath>
 #include <math.h>
+
 //hello
 
 using namespace std;
@@ -51,9 +52,15 @@ string pointToString(Point p, int precision) {
 
 string boxToString(Box b, int precision) {
   
-  // SAMPLE FORMAT (precision = 2): "ul=(3.4,-5),w=5,h=7"
+  ostringstream oss;
+  oss << setprecision(precision);  // Set precision for floating-point values
   
-  return "stub!"; // TODO: Delete this line and comment and replace with appropriate code
+  // Format the string as "ul=(x,y),w=width,h=height"
+  oss << "ul=" << pointToString(b.ul, precision)  // Use pointToString for the upper-left corner
+      << ",w=" << b.width
+      << ",h=" << b.height;
+  
+  return oss.str();
 }
  
 
