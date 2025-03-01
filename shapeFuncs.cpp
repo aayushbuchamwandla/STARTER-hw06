@@ -238,10 +238,10 @@ bool boxesApproxEqual(Box b1, Box b2, double tolerance) {
   // and the definition in your utility.cpp file.
 
   // TODO: FILL THIS IN WITH APPROPRIATE CODE
-  if (!approxEqual(b1.ul.x, b2.ul.x, tolerance) || !approxEqual(b1.ul.y, b2.ul.y, tolerance)) {
+  if (!boxesApproxEqual(b1.ul.x, b2.ul.x, tolerance) || !boxesApproxEqual(b1.ul.y, b2.ul.y, tolerance)) {
 	  return false;
   }
-  if (!approxEqual(b1.width, b2.width, tolerance) || !approxEqual(b1.height, b2.height, tolerance)) {
+  if (!boxesApproxEqual(b1.width, b2.width, tolerance) || !boxesApproxEqual(b1.height, b2.height, tolerance)) {
 		  return false;
   }
 
