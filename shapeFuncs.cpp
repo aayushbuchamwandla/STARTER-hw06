@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>  // for ostringstream
 #include <iomanip> // for setprecision
+#include <math>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ using namespace std;
 // Compute distance between two points
 
 double distanceBetween(Point p, Point q) {
-  return 99999.9; // @@@ STUB
+  return sqrt(pow(q.x - p.x, 2.0) + pow(q.y - p.y, 2.0));
   // HINTS: The distance formula is something you hopefully remember
   //   from H.S. algebra, but if not, Wikipedia is your friend.
   //   The sqrt function is available when you use #include <cmath>, 
