@@ -53,7 +53,7 @@ string pointToString(Point p, int precision) {
 string boxToString(Box b, int precision) {
   
   ostringstream oss;
-  oss << setprecision(precision);  // Set precision for floating-point values
+  oss << setprecision(precision) << fixed;  // Set precision for floating-point values, with fixed point
   
   // Format the string as "ul=(x,y),w=width,h=height"
   oss << "ul=" << pointToString(b.ul, precision)  // Use pointToString for the upper-left corner
